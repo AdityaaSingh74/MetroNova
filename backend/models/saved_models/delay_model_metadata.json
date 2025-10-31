@@ -1,0 +1,1 @@
+{"feature_names": ["dwell_time_seconds", "distance_km", "scheduled_load_factor", "time_of_day", "passenger_density", "route_complexity"], "models": ["delay_category", "delay_minutes", "service_pattern", "day_type", "delay_ensemble"], "trained_at": "2025-09-20T10:52:59.483963"}

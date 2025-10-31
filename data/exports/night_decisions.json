@@ -1,0 +1,219 @@
+{
+  "timestamp": "2025-09-19T03:03:58.313308",
+  "night_shift_summary": {
+    "timestamp": "2025-09-19T03:03:37.481682",
+    "total_trains": 25,
+    "service_released": 7,
+    "held_maintenance": 8,
+    "held_inspection": 4,
+    "held_cleaning": 4,
+    "held_standby": 2,
+    "optimization_time": 0.15039491653442383,
+    "ai_algorithm": "Multi-Constraint Optimization with Safety Priority",
+    "kpi_compliance": {
+      "service_target": "7/13",
+      "safety_compliance": "100%",
+      "branding_active": 2
+    }
+  },
+  "train_decisions": {
+    "service_released": [
+      {
+        "train_id": "PERIYAR",
+        "reason": "Optimal performance - Score: 99.8",
+        "priority": "Service",
+        "location": "Palarivattom",
+        "branding": "BSNL"
+      },
+      {
+        "train_id": "YAMUNA",
+        "reason": "Optimal performance - Score: 98.4",
+        "priority": "Service",
+        "location": "Aluva",
+        "branding": "Samsung"
+      },
+      {
+        "train_id": "DHWANIL",
+        "reason": "Optimal performance - Score: 100.0",
+        "priority": "Service",
+        "location": "Cusat",
+        "branding": "None"
+      },
+      {
+        "train_id": "ARUTH",
+        "reason": "Optimal performance - Score: 98.9",
+        "priority": "Service",
+        "location": "MG Road",
+        "branding": "None"
+      },
+      {
+        "train_id": "VAAYU",
+        "reason": "Optimal performance - Score: 89.5",
+        "priority": "Service",
+        "location": "Kadavanthra",
+        "branding": "None"
+      },
+      {
+        "train_id": "KABANI",
+        "reason": "Optimal performance - Score: 88.7",
+        "priority": "Service",
+        "location": "Edapally",
+        "branding": "None"
+      },
+      {
+        "train_id": "SARAYU",
+        "reason": "Optimal performance - Score: 86.4",
+        "priority": "Service",
+        "location": "Petta",
+        "branding": "None"
+      }
+    ],
+    "held_maintenance": [
+      {
+        "train_id": "VAIGAI",
+        "reason": "3 open job cards",
+        "priority": "Critical",
+        "location": "Changampuzha Park",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "BHAVANI",
+        "reason": "Brake wear 87.3%",
+        "priority": "Critical",
+        "location": "Ernakulam South",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "PADMA",
+        "reason": "Brake wear 87.9%",
+        "priority": "Critical",
+        "location": "Cusat",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "KAVERI",
+        "reason": "3 open job cards",
+        "priority": "Critical",
+        "location": "Cusat",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "SHIRIYA",
+        "reason": "3 open job cards, Rolling stock fitness expired",
+        "priority": "Critical",
+        "location": "Changampuzha Park",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "PAMPA",
+        "reason": "5 open job cards, Rolling stock fitness expired",
+        "priority": "Critical",
+        "location": "Petta",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "NARMADA",
+        "reason": "4 open job cards",
+        "priority": "Critical",
+        "location": "Maharajas",
+        "estimated_time": "6-8 hours"
+      },
+      {
+        "train_id": "MAHE",
+        "reason": "3 open job cards",
+        "priority": "Critical",
+        "location": "Maharajas",
+        "estimated_time": "6-8 hours"
+      }
+    ],
+    "held_inspection": [
+      {
+        "train_id": "NILA",
+        "reason": "Telecom fitness expired",
+        "priority": "High",
+        "location": "Cusat",
+        "estimated_time": "3-4 hours"
+      },
+      {
+        "train_id": "MANDAKINI",
+        "reason": "Telecom fitness expired",
+        "priority": "High",
+        "location": "Kaloor",
+        "estimated_time": "3-4 hours"
+      },
+      {
+        "train_id": "MAARUT",
+        "reason": "Telecom fitness expired",
+        "priority": "High",
+        "location": "Palarivattom",
+        "estimated_time": "3-4 hours"
+      },
+      {
+        "train_id": "GANGA",
+        "reason": "Signalling fitness expired",
+        "priority": "High",
+        "location": "Cusat",
+        "estimated_time": "3-4 hours"
+      }
+    ],
+    "held_cleaning": [
+      {
+        "train_id": "KRISHNA",
+        "reason": "Cleaning required - Last cleaned 2025-09-15",
+        "priority": "High",
+        "location": "Maharajas",
+        "estimated_time": "2-3 hours"
+      },
+      {
+        "train_id": "PAVAN",
+        "reason": "Cleaning required - Last cleaned 2025-09-15",
+        "priority": "High",
+        "location": "Kaloor",
+        "estimated_time": "2-3 hours"
+      },
+      {
+        "train_id": "TAPTI",
+        "reason": "Cleaning required - Last cleaned 2025-09-13",
+        "priority": "High",
+        "location": "Maharajas",
+        "estimated_time": "2-3 hours"
+      },
+      {
+        "train_id": "JHANAVI",
+        "reason": "Cleaning required - Last cleaned 2025-09-17",
+        "priority": "High",
+        "location": "MG Road",
+        "estimated_time": "2-3 hours"
+      }
+    ],
+    "held_standby": [],
+    "held_branding": [
+      {
+        "train_id": "PERIYAR",
+        "campaign": "BSNL",
+        "compliance": "67.5%",
+        "target_hours": 280
+      },
+      {
+        "train_id": "YAMUNA",
+        "campaign": "Samsung",
+        "compliance": "71.1%",
+        "target_hours": 280
+      }
+    ]
+  },
+  "system_status": {
+    "active_trains": 7,
+    "standby_trains": 2,
+    "maintenance_trains": 8,
+    "inspection_trains": 4,
+    "cleaning_trains": 4,
+    "branding_trains": 0,
+    "total_trains": 25,
+    "night_shift_status": "Optimization Complete",
+    "last_optimization": "03:03:37",
+    "kpi_punctuality": 99.5,
+    "energy_savings": 0.0,
+    "safety_compliance": 100.0
+  }
+}

@@ -1,0 +1,71 @@
+﻿# 🚇 KMRL SIH25081 - AI-Driven Train Scheduling System
+# Core Flask Framework
+Flask
+Flask-CORS
+Flask-SocketIO
+
+# Data Science & Machine Learning
+pandas
+numpy3
+scikit-learn
+scipy1
+
+# Optimization Libraries
+PuLP
+DEAP
+ortools
+
+# Database & Storage
+SQLAlchemy
+sqlite3
+
+# API & Web
+requests
+Werkzeug
+Jinja2
+
+# Data Visualization
+matplotlib
+seaborn
+plotly
+
+# Real-time Processing
+redis
+celery
+
+# Utilities
+python-dotenv
+schedule
+pytz
+colorama
+
+# Testing
+pytest
+pytest-flask
+
+# Development
+python-dateutil
+joblib
+
+# Frontend Integration (Optional for advanced features)
+gradio
+streamlit
+
+# Monitoring & Logging
+loguru
+psutil
+
+# File Processing
+openpyxl
+xlsxwriter
+
+# Additional ML Libraries
+xgboost
+lightgbm
+
+# Time Series (for delay prediction)
+statsmodels
+
+# Performance
+numba
+

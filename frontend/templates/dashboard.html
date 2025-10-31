@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚇 KMRL Train Scheduling Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1><i class="fas fa-train"></i> KMRL AI Scheduling System</h1>
+                <div class="system-status" id="systemStatus">
+                    <span class="status-indicator good"></span>
+                    <span class="status-text">System Operational</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="time-display" id="currentTime"></div>
+                <div class="connection-status" id="connectionStatus">
+                    <i class="fas fa-wifi"></i> Connected
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard-main">
+            <!-- Quick Stats Cards -->
+            <section class="stats-section">
+                <div class="stat-card active-trains">
+                    <div class="stat-icon">
+                        <i class="fas fa-subway"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="activeTrainsCount">0</h3>
+                        <p>Active Trains</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card standby-trains">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="standbyTrainsCount">0</h3>
+                        <p>Standby Trains</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card maintenance-trains">
+                    <div class="stat-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="maintenanceTrainsCount">0</h3>
+                        <p>Maintenance</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card avg-delay">
+                    <div class="stat-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avgDelay">0.0</h3>
+                        <p>Avg Delay (min)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <div class="control-card">
+                    <h3><i class="fas fa-database"></i> Data Management</h3>
+                    <div class="control-buttons">
+                        <button class="btn primary" onclick="generateData()">
+                            <i class="fas fa-plus"></i> Generate Data
+                        </button>
+                        <button class="btn secondary" onclick="refreshData()">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-card">
+                    <h3><i class="fas fa-brain"></i> AI Optimization</h3>
+                    <div class="control-buttons">
+                        <button class="btn success" onclick="runOptimization('genetic')">
+                            <i class="fas fa-dna"></i> Genetic Algorithm
+                        </button>
+                        <button class="btn info" onclick="runOptimization('moo')">
+                            <i class="fas fa-bullseye"></i> Multi-Objective
+                        </button>
+                        <button class="btn warning" onclick="runOptimization('hybrid')">
+                            <i class="fas fa-magic"></i> Hybrid AI
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-card">
+                    <h3><i class="fas fa-chart-line"></i> Delay Prediction</h3>
+                    <div class="delay-inputs">
+                        <input type="number" id="dwellTime" placeholder="Dwell Time (s)" value="60">
+                        <input type="number" id="distance" placeholder="Distance (km)" value="8.5" step="0.1">
+                        <input type="number" id="loadFactor" placeholder="Load Factor" value="0.7" step="0.01" min="0" max="1">
+                        <button class="btn primary" onclick="predictDelay()">
+                            <i class="fas fa-crystal-ball"></i> Predict
+                        </button>
+                    </div>
+                    <div class="delay-result" id="delayResult" style="display: none;"></div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-pie"></i> Train Distribution</h3>
+                        <div class="chart-controls">
+                            <button class="btn-small" onclick="updateChart('distribution')">Refresh</button>
+                        </div>
+                    </div>
+                    <canvas id="distributionChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-line"></i> Real-time Metrics</h3>
+                        <div class="chart-controls">
+                            <button class="btn-small" onclick="updateChart('metrics')">Refresh</button>
+                        </div>
+                    </div>
+                    <canvas id="metricsChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Schedule Table -->
+            <section class="schedule-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-table"></i> Current Schedule</h3>
+                    <div class="section-controls">
+                        <button class="btn secondary" onclick="exportSchedule()">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
+                        <button class="btn primary" onclick="refreshSchedule()">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table id="scheduleTable">
+                        <thead>
+                            <tr>
+                                <th>Train ID</th>
+                                <th>Status</th>
+                                <th>Score</th>
+                                <th>Fitness</th>
+                                <th>Job Cards</th>
+                                <th>Branding</th>
+                                <th>Delay (min)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleTableBody">
+                            <tr>
+                                <td colspan="8" class="no-data">No schedule data available. Run optimization to generate schedule.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- What-If Analysis -->
+            <section class="whatif-section" style="display: none;">
+                <div class="section-header">
+                    <h3><i class="fas fa-question-circle"></i> What-If Analysis</h3>
+                    <button class="btn secondary" onclick="toggleWhatIf()">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+                
+                <div class="whatif-controls">
+                    <div class="scenario-input">
+                        <label>Scenario Type:</label>
+                        <select id="scenarioType">
+                            <option value="train_failure">Train Failure</option>
+                            <option value="weather_delay">Weather Impact</option>
+                            <option value="peak_demand">Peak Demand</option>
+                            <option value="maintenance_window">Maintenance Window</option>
+                        </select>
+                    </div>
+                    <div class="scenario-input">
+                        <label>Affected Trains:</label>
+                        <input type="text" id="affectedTrains" placeholder="e.g., KRISHNA,TAPTI">
+                    </div>
+                    <button class="btn primary" onclick="runWhatIf()">
+                        <i class="fas fa-play"></i> Run Analysis
+                    </button>
+                </div>
+                
+                <div class="whatif-results" id="whatifResults" style="display: none;"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-cog fa-spin"></i>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/charts.js"></script>
+</body>
+</html>

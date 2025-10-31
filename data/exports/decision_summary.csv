@@ -1,0 +1,26 @@
+TrainID,CurrentStatus,DecisionReason,KMRLScore,CurrentLocation
+KRISHNA,cleaning,HELD - Scheduled Cleaning: Priority High,100.0,Maharajas
+TAPTI,cleaning,HELD - Scheduled Cleaning: Priority High,86.0,Maharajas
+NILA,inspection,HELD - Systems Inspection: Telecom fitness expired,85.8,Cusat
+SARAYU,service,RELEASED - Service Ready: Score 86.4,86.4,Petta
+ARUTH,service,RELEASED - Service Ready: Score 98.9,98.9,MG Road
+VAIGAI,maintenance,HELD - Safety Critical: 3 open job cards,71.3,Changampuzha Park
+JHANAVI,cleaning,HELD - Scheduled Cleaning: Priority High,84.3,MG Road
+DHWANIL,service,RELEASED - Service Ready: Score 100.0,100.0,Cusat
+BHAVANI,maintenance,HELD - Safety Critical: Brake wear 87.3%,75.1,Ernakulam South
+PADMA,maintenance,HELD - Safety Critical: Brake wear 87.9%,84.7,Cusat
+MANDAKINI,inspection,HELD - Systems Inspection: Telecom fitness expired,84.0,Kaloor
+YAMUNA,service,RELEASED - Service Ready: Score 98.4,98.4,Aluva
+PERIYAR,service,RELEASED - Service Ready: Score 99.8,99.8,Palarivattom
+KABANI,service,RELEASED - Service Ready: Score 88.7,88.7,Edapally
+VAAYU,service,RELEASED - Service Ready: Score 89.5,89.5,Kadavanthra
+KAVERI,maintenance,HELD - Safety Critical: 3 open job cards,73.1,Cusat
+SHIRIYA,maintenance,"HELD - Safety Critical: 3 open job cards, Rolling stock fitness expired",78.1,Changampuzha Park
+PAMPA,maintenance,"HELD - Safety Critical: 5 open job cards, Rolling stock fitness expired",43.3,Petta
+NARMADA,maintenance,HELD - Safety Critical: 4 open job cards,84.0,Maharajas
+MAHE,maintenance,HELD - Safety Critical: 3 open job cards,79.8,Maharajas
+MAARUT,inspection,HELD - Systems Inspection: Telecom fitness expired,86.3,Palarivattom
+SABARMATHI,maintenance,Safety critical - Brake wear/Fitness/Jobs,76.6,Kadavanthra
+GODHAVARI,maintenance,Safety critical - Brake wear/Fitness/Jobs,90.4,Kadavanthra
+GANGA,inspection,HELD - Systems Inspection: Signalling fitness expired,98.5,Cusat
+PAVAN,cleaning,HELD - Scheduled Cleaning: Priority High,94.9,Kaloor
